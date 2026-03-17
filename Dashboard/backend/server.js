@@ -8,8 +8,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://space-dashboard-z681.vercel.app",
+    origin: ["https://space-dashboard-z681.vercel.app"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"], // Add this line!
   })
 );
 
@@ -28,6 +29,5 @@ app.use("/api/skills", require("./routes/skillRoutes"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
 
 module.exports = app;
